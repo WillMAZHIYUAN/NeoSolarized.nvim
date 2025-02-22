@@ -1,17 +1,6 @@
 # 🖌 NeoSolarized
 
-A dark and light Neovim theme written in Lua ported from 
-[NeoSolarized](https://github.com/overcache/NeoSolarized) with better syntax highlighting. Includes
-extra themes for Kitty, Alacritty, Wezterm, Konsole and Windows Terminal.
-
-## Dark (Dark Theme with Transparency)
-![Screenshot_20230430_084417](https://user-images.githubusercontent.com/70003855/235333907-c064208a-3975-404d-874b-58e5c52ee5f0.png)
-
-## Dark
-![Screenshot_20230430_084549](https://user-images.githubusercontent.com/70003855/235333913-ed7b5a20-d114-4963-96e9-1bf06f34440c.png)
-
-## Light
-![Screenshot_20230430_084640](https://user-images.githubusercontent.com/70003855/235333918-848cc7c1-8069-4156-abc4-41fde7283c15.png)
+这是一个 Fork 后更改配色自用的项目
 
 ## 🔥 Features
 
@@ -53,34 +42,11 @@ extra themes for Kitty, Alacritty, Wezterm, Konsole and Windows Terminal.
 
 ## 💡 Installation
 
-Install the theme with your preferred package manager:
-
-#### [`vim-plug`](https://github.com/junegunn/vim-plug)
-
-```vim
-Plug 'Tsuzat/NeoSolarized.nvim', { 'branch': 'master' }
-```
-
-#### [`packer`](https://github.com/wbthomason/packer.nvim)
-
-```lua
-use ('Tsuzat/NeoSolarized.nvim')
-```
-**or** clone the project and install locally using packer.
-
-First clone the project in you machine.
-```sh
-$ git clone https://github.com/Tsuzat/NeoSolarized.nvim
-```
-Install using packer
-```lua
-use ('path-to-NeoSolarized')
-```
 #### [`lazy.nvim`](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-  "Tsuzat/NeoSolarized.nvim",
+  "WillMAZHIYUAN/NeoSolarized.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -156,7 +122,7 @@ NeoSolarized.setup {
 }
 -- Set colorscheme to NeoSolarized
 vim.cmd [[
-   try
+    try
         colorscheme NeoSolarized
     catch /^Vim\%((\a\+)\)\=:E18o
         colorscheme default
@@ -171,13 +137,3 @@ vim.cmd [[
 Extra color configs for **Kitty**, **Alacritty**, **Wezterm** and **Konsole**
 can be found in [extras](extras/). To use them, refer to
 their respective documentation.
-
-## 💥 Contributing
-
-Pull requests are welcome. One can add plugin and language specific highlight groups.
-
-## 🏅 Inspiration
-
-  - Plugin Structure is heavily inspired from [Tokyonight](https://github.com/folke/tokyonight.nvim)
-  - Classic color palettes from [NeoSolarized](https://github.com/overcache/NeoSolarized)
-  - Love for Full Transparent NeoVim themes.
