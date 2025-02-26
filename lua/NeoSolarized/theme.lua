@@ -36,7 +36,7 @@ function M.setup()
     HintText                                 = { sp = c.green, undercurl = false },
     IncSearch                                = { bg = c.orange, fg = "#000000" },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    MatchParen                               = { fg = c.aqua, bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                               = { fg = "#00ffff", bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
     MoreMsg                                  = { fg = c.fg2 },                                                   -- |more-prompt|
     MsgArea                                  = { fg = c.base2 },                                                  -- Area for messages and cmdline
@@ -51,7 +51,7 @@ function M.setup()
     PmenuThumb                               = { bg = c.purple},                                                  -- Popup menu: Thumb of the scrollbar.
     Question                                 = { fg = c.blue },                                                   -- |hit-enter| prompt and yes/no questions
     QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search                                   = { fg = c.red, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search                                   = { fg = "#00ffff", underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
     SpecialKey                               = { fg = c.fg2 },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -120,7 +120,7 @@ function M.setup()
     -- ("Ignore", below, may be invisible...)
     Ignore                                   = { fg = c.base1 },                 -- (preferred) left blank, hidden  |hl-Ignore|
     Error                                    = { fg = c.orange, bold = true },                   -- (preferred) any erroneous construct
-    Todo                                     = { fg = c.purple, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo                                     = { fg = c.violet, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
     qfLineNr                                 = { fg = c.base1 },
     qfFileName                               = { fg = c.blue },
     -- Diagnostic
@@ -131,7 +131,7 @@ function M.setup()
     VirtualTextWarning                       = { fg = c.yellow },
     VirtualTextError                         = { fg = c.orange },
     VirtualTextInfo                          = { fg = c.blue },
-    VirtualTextHint                          = { fg = c.green },
+    VirtualTextHint                          = { fg = "#228b22" },
     ErrorFloat                               = { fg = c.orange, bg = options.transparent and c.none or c.bg1 },
     WarningFloat                             = { fg = c.yellow, bg = options.transparent and c.none or c.bg1 },
     InfoFloat                                = { fg = c.blue, bg = options.transparent and c.none or c.bg1 },
@@ -188,7 +188,7 @@ function M.setup()
     LspSignatureActiveParameter              = { link = "Search" },
     TermCursor                               = { link = "Cursor" },
     healthError                              = { fg = c.orange },
-    healthSuccess                            = { fg = c.green },
+    healthSuccess                            = { fg = "#228b22" },
     healthWarning                            = { fg = c.yellow },
     ALEErrorSign                             = { link = "ErrorMsg" },
     ALEWarningSign                           = { link = "WarningMsg" },
@@ -290,11 +290,11 @@ function M.setup()
     IlluminatedWordRead                      = { link = "CurrentWord" },
     IlluminatedWordWrite                     = { link = "CurrentWord" },
     -- diff
-    diffAdded                                = { fg = c.green },
-    diffRemoved                              = { fg = c.red },
-    diffChanged                              = { fg = c.blue },
-    diffOldFile                              = { fg = c.yellow },
-    diffNewFile                              = { fg = c.orange },
+    diffAdded                                = { fg = "#228b22" },
+    diffRemoved                              = { fg = c.orange },
+    diffChanged                              = { fg = c.yellow },
+    diffOldFile                              = { fg = c.green },
+    diffNewFile                              = { fg = c.red },
     diffFile                                 = { fg = c.aqua },
     diffLine                                 = { fg = c.base1 },
     diffIndexLine                            = { fg = c.purple },
@@ -332,26 +332,26 @@ function M.setup()
     GitGutterChangeLine                      = { link = "diffChanged" },
     GitGutterDeleteLine                      = { link = "diffRemoved" },
     GitGutterChangeDeleteLine                = { fg = c.purple },
-    GitGutterAddLineNr                       = { fg = c.green },
-    GitGutterChangeLineNr                    = { fg = c.blue },
-    GitGutterDeleteLineNr                    = { fg = c.red },
+    GitGutterAddLineNr                       = { fg = "#228b22" },
+    GitGutterChangeLineNr                    = { fg = c.yellow },
+    GitGutterDeleteLineNr                    = { fg = c.orange },
     GitGutterChangeDeleteLineNr              = { fg = c.purple },
     -- GitSigns
     GitSignsAdd                              = { link = "GreenSign" }, -- diff mode: Added line |diff.txt|
     GitSignsChange                           = { link = "BlueSign" },  -- diff mode: Changed line |diff.txt|
     GitSignsDelete                           = { link = "RedSign" },   -- diff mode: Deleted line |diff.txt|
-    GitSignsAddNr                            = { fg = c.green },
-    GitSignsChangeNr                         = { fg = c.blue },
-    GitSignsDeleteNr                         = { fg = c.red },
+    GitSignsAddNr                            = { fg = "#228b22" },
+    GitSignsChangeNr                         = { fg = c.yellow },
+    GitSignsDeleteNr                         = { fg = c.orange },
     GitSignsAddLn                            = { link = "diffAdded" },
     GitSignsDeleteLn                         = { link = "diffRemoved" },
     GitSignsCurrentLineBlame                 = { fg = c.base1 },
     -- Telescope
-    TelescopeMatching                        = { fg = c.green, bold = true },
+    TelescopeMatching                        = { fg = "#00ffff", bold = true },
     TelescopeBorder                          = { fg = c.base1, bg = options.transparent and c.none or c.bg0 },
     TelescopeNormal                          = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },
     TelescopePromptPrefix                    = { fg = c.orange },
-    TelescopeSelection                       = { link = "diffAdded" },
+    TelescopeSelection                       = { fg = c.green },
     -- NvimTree
     NvimTreeSymlink                          = { fg = c.fg0 },
     NvimTreeFolderName                       = { fg = c.green },
@@ -430,7 +430,7 @@ function M.setup()
     AlphaFooter                              = { fg = c.red, italic = true },
     AlphaButtons                             = { fg = c.purple },
     -- WhichKey
-    WhichKey                                 = { fg = c.red },
+    WhichKey                                 = { fg = "#00ffff" },
     WhichKeyGroup                            = { fg = c.blue },
     WhichKeyDesc                             = { fg = c.purple },
     WhichKeySeparator                        = { fg = c.green },
@@ -685,7 +685,7 @@ function M.setup()
     MiniStatuslineModeVisual                 = { fg = "BLACK", bg = c.purple, bold = true },
     MiniSurround                             = { bg = c.orange, fg = "BLACK" },
     MiniTablineCurrent                       = { fg = c.fg1, bg = c.fg2 },
-    MiniTablineFill                          = { bg = "BLACK" },
+    MiniTablineFill                          = { bg = c.none },
     MiniTablineHidden                        = { fg = "BLACK", bg = c.bg1 },
     MiniTablineModifiedCurrent               = { fg = c.red, bg = c.fg2 },
     MiniTablineModifiedHidden                = { bg = c.bg1, fg = c.bg_red },
