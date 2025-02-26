@@ -11,21 +11,27 @@ M.dark = {
   base1       = '#93a1a1',
   base2       = '#eee8d5',
   base3       = '#fdf6e3',
+  hide_color  = '#00323c',
   red         = '#dc322f',
+  real_orange = '#ff4500',
   orange      = '#cb4b16',
+  real_yellow = '#ffa500',
   yellow      = '#b58900',
+  real_green  = '#228b22',
   green       = '#859900',
   aqua        = '#2aa198',
+  cyan        = '#00ffff',
   blue        = '#268bd2',
   purple      = '#d33682',
   violet      = '#6c71c4',
+  black       = '#000000',
   bg_red      = '#da0000',
   bg_green    = '#859000',
   bg_yellow   = '#b59900',
-  diff_add    = '#003200',
-  diff_change = '#323200',
-  diff_delete = '#320000',
-  diff_text   = '#404000',
+  diff_add    = '#228b22',
+  diff_change = '#b58900',
+  diff_delete = '#dc322f',
+  diff_text   = '#000000',
   none        = "NONE"
 }
 
@@ -54,7 +60,7 @@ M.light = {
   diff_add    = '#caffca',
   diff_change = '#ffffca',
   diff_delete = '#ffcaca',
-  diff_text   = '#e8e8b3',
+  diff_text   = '#ffffff',
   none        = "NONE"
 }
 

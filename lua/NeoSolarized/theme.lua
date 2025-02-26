@@ -12,11 +12,11 @@ function M.setup()
 
   theme.highlights = {
     ColorColumn                              = { bg = c.bg1 },                                  -- used for the columns set with 'colorcolumn'
-    Comment                                  = { fg = c.fg2, style = options.styles.comments }, -- any comment
+    Comment                                  = { fg = c.hide_color, style = options.styles.comments }, -- any comment
     Conceal                                  = { fg = c.bg1 },                                  -- placeholder characters substituted for concealed text (see 'conceallevel')
-    CurSearch                                = { fg = "#000000", bg = c.orange },
-    CurrentWord                              = { fg = c.bg0, bg = c.bg_green },
-    Cursor                                   = { fg = c.bg1, bg = c.fg0 },                      -- character under the cursor
+    CurSearch                                = { fg = c.black, bg = c.real_orange },
+    CurrentWord                              = { fg = c.bg0, bg = c.fg0 },
+    Cursor                                   = { fg = c.bg0, bg = c.fg0 },                      -- character under the cursor
     CursorColumn                             = { link = "CursorLine" },                         -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorIM                                 = { fg = c.bg0, bg = c.fg0 },                      -- like Cursor, but used when in IME mode |CursorIM|
     CursorLine                               = { bg = c.none }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
@@ -27,31 +27,29 @@ function M.setup()
     DiffText                                 = { bg = c.diff_text },                            -- diff mode: Changed text within a changed line |diff.txt|
     Directory                                = { fg = c.blue },                                 -- directory names (and other special names in listings)
     EndOfBuffer                              = { fg = c.bg1 },                                  -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    ErrorMsg                                 = { fg = c.red, bold = true },                                  -- error messages on the command line
-    ErrorText                                = { sp = c.red, bold = true },
-    FloatBorder                              = { fg = c.base1, bg = options.transparent and c.none or c.bg1 },
+    FloatBorder                              = { fg = c.base1, bg = c.none },
     FoldColumn                               = { bg = options.transparent and c.none or c.bg0, fg = c.bg1 }, -- 'foldcolumn'
     Folded                                   = { fg = c.blue, bg = c.bg1 },                                  -- line used for closed folds
     Foo                                      = { bg = c.purple, fg = c.purple },
-    HintText                                 = { sp = c.green, undercurl = false },
-    IncSearch                                = { bg = c.orange, fg = "#000000" },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
+    IncSearch                                = { bg = c.real_orange, fg = c.black, bold = true },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    MatchParen                               = { fg = "#00ffff", bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen                               = { fg = c.cyan, bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
     MoreMsg                                  = { fg = c.fg2 },                                                   -- |more-prompt|
     MsgArea                                  = { fg = c.base2 },                                                  -- Area for messages and cmdline
-    NonText                                  = { fg = c.fg2 },                                                    -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText                                  = { fg = c.hide_color },                                                    -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal                                   = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text
     NormalFloat                              = { fg = c.fg0, bg = options.transparent and c.none or c.bg1 },      -- Normal text in floating windows.
     NormalNC                                 = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text in non-current windows
     NormalSB                                 = { fg = c.fg0, bg = c.bg0 },                                        -- normal text in sidebar
     Pmenu                                    = { bg = options.transparent and c.none or c.bg1, fg = c.fg0 },      -- Popup menu: normal item.
-    PmenuSbar                                = { bg = c.none },                  -- Popup menu: scrollbar.
-    PmenuSel                                 = { bg = c.none, fg = c.orange },                                      -- Popup menu: selected item.
+    PmenuSbar                                = { bg = c.black },                  -- Popup menu: scrollbar.
+    PmenuSel                                 = { bg = c.none, fg = c.real_orange },                                      -- Popup menu: selected item.
     PmenuThumb                               = { bg = c.purple},                                                  -- Popup menu: Thumb of the scrollbar.
+    PopupNotification                        = { bg = c.none, fg = c.hide_color},
     Question                                 = { fg = c.blue },                                                   -- |hit-enter| prompt and yes/no questions
     QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search                                   = { fg = "#00ffff", underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search                                   = { fg = c.cyan, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
     SpecialKey                               = { fg = c.fg2 },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -72,8 +70,12 @@ function M.setup()
       fg = config.is_day() and c.fg0 or c.none
     },                                                                                                       -- Visual mode selection
     VisualNOS                                = { bg = c.bg1 },                                               -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg                               = { fg = c.yellow },                                               -- warning messages
-    WarningText                              = { sp = c.yellow, undercurl = options.styles.undercurl },
+    ErrorMsg                                 = { fg = c.real_orange, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
+    ErrorText                                = { sp = c.real_orange, bold = true, undercurl = options.styles.undercurl },
+    WarningMsg                               = { fg = c.real_yellow, bold = true, undercurl = options.styles.undercurl },                                               -- warning messages
+    WarningText                              = { sp = c.real_yellow, bold = true, undercurl = options.styles.undercurl },
+    HintMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
+    HintText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu                                 = { bg = c.bg1 },                                               -- current match in 'wildmenu' completion
     WinSeparator                             = { fg = options.transparent and c.bg0 or c.bg1, bold = true }, -- the column separating vertically split windows
@@ -84,58 +86,58 @@ function M.setup()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant                                 = { fg = c.green },                                     -- (preferred) any constant
-    String                                   = { fg = c.green, style = options.styles.string },     --   a string constant: "this is a string"
+    Constant                                 = { fg = c.green, bold = true },                                     -- (preferred) any constant
+    String                                   = { fg = c.green },     --   a string constant: "this is a string"
     Character                                = { fg = c.green },                                    --  a character constant: 'c', '\n'
-    Number                                   = { fg = "#228b22" },                                   --   a number constant: 234, 0xff
-    Boolean                                  = { fg = c.orange },                                   --  a boolean constant: TRUE, false
-    Float                                    = { fg = "#228b22" },                                   --    a floating point constant: 2.3e10
-    Identifier                               = { fg = c.blue, style = options.styles.variables },   -- (preferred) any variable name
-    Function                                 = { fg = c.blue, style = options.styles.functions }, -- function name (also: methods for classes)
-    Statement                                = { fg = c.purple, bold = true },     -- (preferred) any statement
-    Conditional                              = { fg = c.yellow, bold = true},    --  if, then, else, endif, switch, etc.
-    Repeat                                   = { fg = c.yellow, bold = true},     --   for, do, while, etc.
-    Label                                    = { fg = c.yellow, bold = true },                                   --    case, default, etc.
+    Number                                   = { fg = c.real_green },                                   --   a number constant: 234, 0xff
+    Float                                    = { fg = c.real_green },                                   --    a floating point constant: 2.3e10
+    Boolean                                  = { fg = c.real_orange },                                   --  a boolean constant: TRUE, false
+    Identifier                               = { fg = c.blue },   -- (preferred) any variable name
+    Function                                 = { fg = c.blue, bold = true }, -- function name (also: methods for classes)
+    Statement                                = { fg = c.real_orange, bold = true },     -- (preferred) any statement
+    Conditional                              = { fg = c.real_yellow, bold = true },    --  if, then, else, endif, switch, etc.
+    Repeat                                   = { fg = c.real_yellow, bold = true },     --   for, do, while, etc.
+    Label                                    = { fg = c.real_yellow, bold = true },                                   --    case, default, etc.
     Operator                                 = { fg = c.orange, bold = true },                                   -- "sizeof", "+", "*", etc.
-    Keyword                                  = { fg = c.yellow, style = options.styles.keywords },     --  any other keyword
-    Exception                                = { fg = c.orange, italic = options.enable_italics },     --  try, catch, throw
-    PreProc                                  = { fg = c.purple, italic = options.enable_italics },  -- (preferred) generic Preprocessor
-    PreCondit                                = { fg = c.purple, italic = options.enable_italics },
-    Include                                  = { fg = c.purple, italic = options.enable_italics },     --  preprocessor #include
-    Define                                   = { fg = c.purple, italic = options.enable_italics },  --   preprocessor #define
+    Keyword                                  = { fg = c.real_yellow, bold = true },     --  any other keyword
+    Exception                                = { fg = c.real_orange, bold = true },     --  try, catch, throw
+    PreProc                                  = { fg = c.purple },  -- (preferred) generic Preprocessor
+    PreCondit                                = { fg = c.purple },
+    Include                                  = { fg = c.purple },     --  preprocessor #include
+    Define                                   = { fg = c.purple },  --   preprocessor #define
     Macro                                    = { fg = c.purple },                                     --    same as Define
     Type                                     = { fg = c.purple, bold = true },                                   -- (preferred) int, long, char, etc.
     StorageClass                             = { fg = c.yellow, bold = true },                                   -- static, register, volatile, etc.
     Structure                                = { fg = c.yellow, bold = true },                                   --  struct, union, enum, etc.
-    Typedef                                  = { fg = c.orange, italic = options.enable_italics },     --  A typedef
+    Typedef                                  = { fg = c.purple, bold = true, italic = options.enable_italics },     --  A typedef
     Special                                  = { fg = c.orange, bold = true },                                   -- (preferred) any special symbol
     SpecialChar                              = { fg = c.orange, bold = true },                                   --  special character in a constant
     Tag                                      = { fg = c.orange, bold = true },                                   --    you can use CTRL-] on this
     Delimiter                                = { fg = c.fg0, bold = true },                                      --  character that needs attention
     SpecialComment                           = { fg = c.base1, bold = true },                                    -- special things inside a comment
-    Debug                                    = { fg = c.orange },                                   --    debugging statements
+    Debug                                    = { fg = c.hide_color },                                   --    debugging statements
     Underlined                               = { underline = true },                                -- (preferred) text that stands out, HTML links
     Bold                                     = { bold = true },
     Italic                                   = { italic = true },
     -- ("Ignore", below, may be invisible...)
-    Ignore                                   = { fg = c.base1 },                 -- (preferred) left blank, hidden  |hl-Ignore|
+    Ignore                                   = { fg = c.hide_color },                 -- (preferred) left blank, hidden  |hl-Ignore|
     Error                                    = { fg = c.orange, bold = true },                   -- (preferred) any erroneous construct
     Todo                                     = { fg = c.violet, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
     qfLineNr                                 = { fg = c.base1 },
     qfFileName                               = { fg = c.blue },
     -- Diagnostic
-    RedSign                                  = { fg = c.orange },
-    YellowSign                               = { fg = c.yellow },
-    GreenSign                                = { fg = "#228b22" },
+    RedSign                                  = { fg = c.real_orange },
+    YellowSign                               = { fg = c.real_yellow },
+    GreenSign                                = { fg = c.real_green },
     BlueSign                                 = { fg = c.blue },
-    VirtualTextWarning                       = { fg = c.yellow },
-    VirtualTextError                         = { fg = c.orange },
+    VirtualTextWarning                       = { fg = c.real_yellow },
+    VirtualTextError                         = { fg = c.real_orange },
     VirtualTextInfo                          = { fg = c.blue },
-    VirtualTextHint                          = { fg = "#228b22" },
-    ErrorFloat                               = { fg = c.orange, bg = options.transparent and c.none or c.bg1 },
-    WarningFloat                             = { fg = c.yellow, bg = options.transparent and c.none or c.bg1 },
+    VirtualTextHint                          = { fg = c.real_green },
+    ErrorFloat                               = { fg = c.real_orange, bg = options.transparent and c.none or c.bg1 },
+    WarningFloat                             = { fg = c.real_yellow, bg = options.transparent and c.none or c.bg1 },
     InfoFloat                                = { fg = c.blue, bg = options.transparent and c.none or c.bg1 },
-    HintFloat                                = { fg = "#228b22", bg = options.transparent and c.none or c.bg1 },
+    HintFloat                                = { fg = c.real_green, bg = options.transparent and c.none or c.bg1 },
     --[[ WinBarNC                   = { fg = c.base1 }, ]]
     DiagnosticFloatingError                  = { link = "ErrorFloat" },
     DiagnosticFloatingWarn                   = { link = "WarningFloat" },
@@ -187,9 +189,9 @@ function M.setup()
     LspCodeLensSeparator                     = { link = "VirtualTextHint" },
     LspSignatureActiveParameter              = { link = "Search" },
     TermCursor                               = { link = "Cursor" },
-    healthError                              = { fg = c.orange },
-    healthSuccess                            = { fg = "#228b22" },
-    healthWarning                            = { fg = c.yellow },
+    healthError                              = { fg = c.real_orange },
+    healthSuccess                            = { fg = c.real_green },
+    healthWarning                            = { fg = c.real_yellow },
     ALEErrorSign                             = { link = "ErrorMsg" },
     ALEWarningSign                           = { link = "WarningMsg" },
     -- These highlight Groups are for Tree-sitter
@@ -290,13 +292,13 @@ function M.setup()
     IlluminatedWordRead                      = { link = "CurrentWord" },
     IlluminatedWordWrite                     = { link = "CurrentWord" },
     -- diff
-    diffAdded                                = { fg = "#228b22" },
-    diffRemoved                              = { fg = c.orange },
-    diffChanged                              = { fg = c.yellow },
-    diffOldFile                              = { fg = c.green },
-    diffNewFile                              = { fg = c.red },
+    diffAdded                                = { fg = c.real_green },
+    diffRemoved                              = { fg = c.real_orange },
+    diffChanged                              = { fg = c.real_yellow },
+    diffOldFile                              = { fg = c.hide_color },
+    diffNewFile                              = { fg = c.base1 },
     diffFile                                 = { fg = c.aqua },
-    diffLine                                 = { fg = c.base1 },
+    diffLine                                 = { fg = c.aqua },
     diffIndexLine                            = { fg = c.purple },
     -- Neogit
     NeogitBranch                             = { fg = c.purple },
@@ -325,30 +327,30 @@ function M.setup()
     NeotestTarget                            = { fg = c.blue },
     -- GitGutter
     GitGutterAdd                             = { link = "GreenSign" },
-    GitGutterChange                          = { link = "BlueSign" },
+    GitGutterChange                          = { link = "YellowSign" },
     GitGutterDelete                          = { link = "RedSign" },
     GitGutterChangeDelete                    = { fg = c.purple },
     GitGutterAddLine                         = { link = "diffAdded" },
     GitGutterChangeLine                      = { link = "diffChanged" },
     GitGutterDeleteLine                      = { link = "diffRemoved" },
     GitGutterChangeDeleteLine                = { fg = c.purple },
-    GitGutterAddLineNr                       = { fg = "#228b22" },
-    GitGutterChangeLineNr                    = { fg = c.yellow },
-    GitGutterDeleteLineNr                    = { fg = c.orange },
+    GitGutterAddLineNr                       = { fg = c.real_green },
+    GitGutterChangeLineNr                    = { fg = c.real_yellow },
+    GitGutterDeleteLineNr                    = { fg = c.real_orange },
     GitGutterChangeDeleteLineNr              = { fg = c.purple },
     -- GitSigns
     GitSignsAdd                              = { link = "GreenSign" }, -- diff mode: Added line |diff.txt|
-    GitSignsChange                           = { link = "BlueSign" },  -- diff mode: Changed line |diff.txt|
+    GitSignsChange                           = { link = "YellowSign" },  -- diff mode: Changed line |diff.txt|
     GitSignsDelete                           = { link = "RedSign" },   -- diff mode: Deleted line |diff.txt|
-    GitSignsAddNr                            = { fg = "#228b22" },
-    GitSignsChangeNr                         = { fg = c.yellow },
-    GitSignsDeleteNr                         = { fg = c.orange },
+    GitSignsAddNr                            = { fg = c.real_green },
+    GitSignsChangeNr                         = { fg = c.real_yellow },
+    GitSignsDeleteNr                         = { fg = c.real_orange },
     GitSignsAddLn                            = { link = "diffAdded" },
     GitSignsDeleteLn                         = { link = "diffRemoved" },
     GitSignsCurrentLineBlame                 = { fg = c.base1 },
     -- Telescope
-    TelescopeMatching                        = { fg = "#00ffff", bold = true },
-    TelescopeBorder                          = { fg = c.base1, bg = options.transparent and c.none or c.bg0 },
+    TelescopeMatching                        = { fg = c.cyan, bold = true },
+    TelescopeBorder                          = { fg = c.base0, bg = options.transparent and c.none or c.bg0 },
     TelescopeNormal                          = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },
     TelescopePromptPrefix                    = { fg = c.orange },
     TelescopeSelection                       = { fg = c.green },
@@ -430,10 +432,10 @@ function M.setup()
     AlphaFooter                              = { fg = c.red, italic = true },
     AlphaButtons                             = { fg = c.purple },
     -- WhichKey
-    WhichKey                                 = { fg = "#00ffff" },
+    WhichKey                                 = { fg = c.cyan },
     WhichKeyGroup                            = { fg = c.blue },
     WhichKeyDesc                             = { fg = c.purple },
-    WhichKeySeparator                        = { fg = c.green },
+    WhichKeySeparator                        = { fg = c.real_orange },
     WhichKeyFloat                            = { bg = options.transparent and c.none or c.bg1 },
     WhichKeyValue                            = { fg = c.fg2 },
     -- LspSaga (Start)
