@@ -14,12 +14,12 @@ function M.setup()
     ColorColumn                              = { bg = c.bg1 },                                  -- used for the columns set with 'colorcolumn'
     Comment                                  = { fg = c.fg2, style = options.styles.comments }, -- any comment
     Conceal                                  = { fg = c.bg1 },                                  -- placeholder characters substituted for concealed text (see 'conceallevel')
-    CurSearch                                = { link = "IncSearch" },
+    CurSearch                                = { fg = "#000000", bg = c.orange },
     CurrentWord                              = { fg = c.bg0, bg = c.bg_green },
     Cursor                                   = { fg = c.bg1, bg = c.fg0 },                      -- character under the cursor
     CursorColumn                             = { link = "CursorLine" },                         -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorIM                                 = { fg = c.bg0, bg = c.fg0 },                      -- like Cursor, but used when in IME mode |CursorIM|
-    CursorLine                               = { bg = options.transparent and c.bg0 or c.bg1 }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine                               = { bg = c.none }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     CursorLineNr                             = { fg = c.base2 },                                -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     DiffAdd                                  = { bg = c.diff_add },                             -- diff mode: Added line |diff.txt|
     DiffChange                               = { bg = c.diff_change },                          -- diff mode: Changed line |diff.txt|
@@ -28,17 +28,17 @@ function M.setup()
     Directory                                = { fg = c.blue },                                 -- directory names (and other special names in listings)
     EndOfBuffer                              = { fg = c.bg1 },                                  -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     ErrorMsg                                 = { fg = c.red },                                  -- error messages on the command line
-    ErrorText                                = { sp = c.red, undercurl = options.styles.undercurl },
+    ErrorText                                = { sp = c.red },
     FloatBorder                              = { fg = c.base1, bg = options.transparent and c.none or c.bg1 },
     FoldColumn                               = { bg = options.transparent and c.none or c.bg0, fg = c.bg1 }, -- 'foldcolumn'
     Folded                                   = { fg = c.blue, bg = c.bg1 },                                  -- line used for closed folds
     Foo                                      = { bg = c.purple, fg = c.purple },
     HintText                                 = { sp = c.green, undercurl = false },
-    IncSearch                                = { bg = c.orange, fg = c.bg0 },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText     = { sp = c.blue, undercurl = options.styles.undercurl },
+    IncSearch                                = { bg = c.orange, fg = "#000000" },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     MatchParen                               = { fg = c.orange, bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
-    MoreMsg                                  = { fg = c.blue },                                                   -- |more-prompt|
+    MoreMsg                                  = { fg = c.fg2 },                                                   -- |more-prompt|
     MsgArea                                  = { fg = c.base2 },                                                  -- Area for messages and cmdline
     NonText                                  = { fg = c.fg2 },                                                    -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal                                   = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text
@@ -46,12 +46,12 @@ function M.setup()
     NormalNC                                 = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text in non-current windows
     NormalSB                                 = { fg = c.fg0, bg = c.bg0 },                                        -- normal text in sidebar
     Pmenu                                    = { bg = options.transparent and c.none or c.bg1, fg = c.fg0 },      -- Popup menu: normal item.
-    PmenuSbar                                = { bg = options.transparent and c.none or c.bg1 },                  -- Popup menu: scrollbar.
-    PmenuSel                                 = { bg = c.fg2, fg = c.base3 },                                      -- Popup menu: selected item.
-    PmenuThumb                               = { bg = c.base1 },                                                  -- Popup menu: Thumb of the scrollbar.
+    PmenuSbar                                = { bg = c.none },                  -- Popup menu: scrollbar.
+    PmenuSel                                 = { bg = c.none, fg = c.orange },                                      -- Popup menu: selected item.
+    PmenuThumb                               = { bg = c.orange },                                                  -- Popup menu: Thumb of the scrollbar.
     Question                                 = { fg = c.blue },                                                   -- |hit-enter| prompt and yes/no questions
     QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search                                   = { bg = c.bg_green, fg = c.bg0 },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search                                   = { fg = c.red, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
     SpecialKey                               = { fg = c.fg2 },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -72,7 +72,7 @@ function M.setup()
       fg = config.is_day() and c.fg0 or c.none
     },                                                                                                       -- Visual mode selection
     VisualNOS                                = { bg = c.bg1 },                                               -- Visual mode selection when vim is "Not Owning the Selection".
-    WarningMsg                               = { fg = c.red },                                               -- warning messages
+    WarningMsg                               = { fg = c.yellow },                                               -- warning messages
     WarningText                              = { sp = c.yellow, undercurl = options.styles.undercurl },
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu                                 = { bg = c.bg1 },                                               -- current match in 'wildmenu' completion
@@ -84,58 +84,58 @@ function M.setup()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant                                 = { fg = c.aqua },                                     -- (preferred) any constant
+    Constant                                 = { fg = c.green },                                     -- (preferred) any constant
     String                                   = { fg = c.green, style = options.styles.string },     --   a string constant: "this is a string"
     Character                                = { fg = c.green },                                    --  a character constant: 'c', '\n'
-    Number                                   = { fg = c.purple },                                   --   a number constant: 234, 0xff
-    Boolean                                  = { fg = c.purple },                                   --  a boolean constant: TRUE, false
-    Float                                    = { fg = c.purple },                                   --    a floating point constant: 2.3e10
+    Number                                   = { fg = "#008080" },                                   --   a number constant: 234, 0xff
+    Boolean                                  = { fg = c.orange },                                   --  a boolean constant: TRUE, false
+    Float                                    = { fg = "#008080" },                                   --    a floating point constant: 2.3e10
     Identifier                               = { fg = c.blue, style = options.styles.variables },   -- (preferred) any variable name
-    Function                                 = { fg = c.yellow, style = options.styles.functions }, -- function name (also: methods for classes)
-    Statement                                = { fg = c.red, italic = options.enable_italics },     -- (preferred) any statement
-    Conditional                              = { fg = c.aqua, italic = options.enable_italics },    --  if, then, else, endif, switch, etc.
-    Repeat                                   = { fg = c.red, italic = options.enable_italics },     --   for, do, while, etc.
+    Function                                 = { fg = c.blue, style = options.styles.functions }, -- function name (also: methods for classes)
+    Statement                                = { fg = c.orange, italic = options.enable_italics },     -- (preferred) any statement
+    Conditional                              = { fg = c.yellow, italic = options.enable_italics, bold = true},    --  if, then, else, endif, switch, etc.
+    Repeat                                   = { fg = c.yellow, italic = options.enable_italics, bold = true},     --   for, do, while, etc.
     Label                                    = { fg = c.orange },                                   --    case, default, etc.
     Operator                                 = { fg = c.orange },                                   -- "sizeof", "+", "*", etc.
-    Keyword                                  = { fg = c.red, style = options.styles.keywords },     --  any other keyword
-    Exception                                = { fg = c.red, italic = options.enable_italics },     --  try, catch, throw
+    Keyword                                  = { fg = c.yellow, style = options.styles.keywords },     --  any other keyword
+    Exception                                = { fg = c.orange, italic = options.enable_italics },     --  try, catch, throw
     PreProc                                  = { fg = c.purple, italic = options.enable_italics },  -- (preferred) generic Preprocessor
     PreCondit                                = { fg = c.purple, italic = options.enable_italics },
-    Include                                  = { fg = c.red, italic = options.enable_italics },     --  preprocessor #include
+    Include                                  = { fg = c.purple, italic = options.enable_italics },     --  preprocessor #include
     Define                                   = { fg = c.purple, italic = options.enable_italics },  --   preprocessor #define
-    Macro                                    = { fg = c.aqua },                                     --    same as Define
-    Type                                     = { fg = c.yellow },                                   -- (preferred) int, long, char, etc.
+    Macro                                    = { fg = c.purple },                                     --    same as Define
+    Type                                     = { fg = c.purple },                                   -- (preferred) int, long, char, etc.
     StorageClass                             = { fg = c.orange },                                   -- static, register, volatile, etc.
     Structure                                = { fg = c.orange },                                   --  struct, union, enum, etc.
-    Typedef                                  = { fg = c.red, italic = options.enable_italics },     --  A typedef
-    Special                                  = { fg = c.purple },                                   -- (preferred) any special symbol
-    SpecialChar                              = { fg = c.yellow },                                   --  special character in a constant
+    Typedef                                  = { fg = c.orange, italic = options.enable_italics },     --  A typedef
+    Special                                  = { fg = c.orange },                                   -- (preferred) any special symbol
+    SpecialChar                              = { fg = c.orange },                                   --  special character in a constant
     Tag                                      = { fg = c.orange },                                   --    you can use CTRL-] on this
-    Delimiter                                = { fg = c.fg0 },                                      --  character that needs attention
-    SpecialComment                           = { fg = c.base1 },                                    -- special things inside a comment
+    Delimiter                                = { fg = c.fg0, bold = true },                                      --  character that needs attention
+    SpecialComment                           = { fg = c.base1, bold = true },                                    -- special things inside a comment
     Debug                                    = { fg = c.orange },                                   --    debugging statements
     Underlined                               = { underline = true },                                -- (preferred) text that stands out, HTML links
     Bold                                     = { bold = true },
     Italic                                   = { italic = true },
     -- ("Ignore", below, may be invisible...)
     Ignore                                   = { fg = c.base1 },                 -- (preferred) left blank, hidden  |hl-Ignore|
-    Error                                    = { fg = c.red },                   -- (preferred) any erroneous construct
-    Todo                                     = { bg = c.bg_yellow, fg = c.bg0 }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Error                                    = { fg = c.orange, bold = true },                   -- (preferred) any erroneous construct
+    Todo                                     = { fg = c.purple, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
     qfLineNr                                 = { fg = c.base1 },
     qfFileName                               = { fg = c.blue },
     -- Diagnostic
-    RedSign                                  = { fg = c.red },
+    RedSign                                  = { fg = c.orange },
     YellowSign                               = { fg = c.yellow },
-    GreenSign                                = { fg = c.green },
+    GreenSign                                = { fg = "#008080" },
     BlueSign                                 = { fg = c.blue },
     VirtualTextWarning                       = { fg = c.yellow },
-    VirtualTextError                         = { fg = c.red },
+    VirtualTextError                         = { fg = c.orange },
     VirtualTextInfo                          = { fg = c.blue },
     VirtualTextHint                          = { fg = c.green },
-    ErrorFloat                               = { fg = c.red, bg = options.transparent and c.none or c.bg1 },
+    ErrorFloat                               = { fg = c.orange, bg = options.transparent and c.none or c.bg1 },
     WarningFloat                             = { fg = c.yellow, bg = options.transparent and c.none or c.bg1 },
     InfoFloat                                = { fg = c.blue, bg = options.transparent and c.none or c.bg1 },
-    HintFloat                                = { fg = c.green, bg = options.transparent and c.none or c.bg1 },
+    HintFloat                                = { fg = "#008080", bg = options.transparent and c.none or c.bg1 },
     --[[ WinBarNC                   = { fg = c.base1 }, ]]
     DiagnosticFloatingError                  = { link = "ErrorFloat" },
     DiagnosticFloatingWarn                   = { link = "WarningFloat" },
@@ -187,7 +187,7 @@ function M.setup()
     LspCodeLensSeparator                     = { link = "VirtualTextHint" },
     LspSignatureActiveParameter              = { link = "Search" },
     TermCursor                               = { link = "Cursor" },
-    healthError                              = { fg = c.red },
+    healthError                              = { fg = c.orange },
     healthSuccess                            = { fg = c.green },
     healthWarning                            = { fg = c.yellow },
     ALEErrorSign                             = { link = "ErrorMsg" },
@@ -217,7 +217,7 @@ function M.setup()
     TSMethod                                 = { fg = c.green, bold = true },
     TSNamespace                              = { fg = c.yellow, italic = true },
     TSNone                                   = { fg = c.fg0 },
-    TSNumber                                 = { fg = c.purple },
+    TSNumber                                 = { fg = c.green },
     TSOperator                               = { fg = c.orange },
     TSParameter                              = { fg = c.fg0 },
     TSParameterReference                     = { fg = c.fg0 },
