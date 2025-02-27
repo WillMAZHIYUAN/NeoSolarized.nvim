@@ -78,8 +78,8 @@ function M.setup()
     ErrorText                                = { sp = c.real_orange, bold = true, undercurl = options.styles.undercurl },
     WarningMsg                               = { fg = c.real_yellow, bold = true, undercurl = options.styles.undercurl },                                               -- warning messages
     WarningText                              = { sp = c.real_yellow, bold = true, undercurl = options.styles.undercurl },
-    InfoMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
-    InfoText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
+    InfoMsg                                  = { fg = c.fg0, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
+    InfoText                                 = { sp = c.fg0, bold = true, undercurl = options.styles.undercurl },
     HintMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
     HintText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -136,13 +136,13 @@ function M.setup()
     YellowSign                               = { fg = c.real_yellow },
     GreenSign                                = { fg = c.real_green },
     BlueSign                                 = { fg = c.blue },
-    VirtualTextWarning                       = { fg = c.black, bg = c.real_yellow },
     VirtualTextError                         = { fg = c.black, bg = c.real_orange },
-    VirtualTextInfo                          = { fg = c.black, bg = c.fg0 },
+    VirtualTextWarning                       = { fg = c.black, bg = c.real_yellow },
+    VirtualTextInfo                          = { fg = c.fg0, bg = c.none },
     VirtualTextHint                          = { fg = c.hide_color, bg = c.none },
     ErrorFloat                               = { fg = c.black, bg = c.real_orange },
     WarningFloat                             = { fg = c.black, bg = c.real_yellow },
-    InfoFloat                                = { fg = c.black, bg = c.fg0 },
+    InfoFloat                                = { fg = c.fg0, bg = c.none },
     HintFloat                                = { fg = c.hide_color, bg = c.none },
     WinBar                                   = { fg = c.hide_color, bg = c.none },
     WinBarNC                                 = { fg = c.hide_color, bg = c.none },
@@ -164,7 +164,7 @@ function M.setup()
     DiagnosticUnderlineHint                  = { link = "HintText" },
     DiagnosticSignError                      = { link = "RedSign" },
     DiagnosticSignWarn                       = { link = "YellowSign" },
-    DiagnosticSignInfo                       = { link = "GreenSign" },
+    DiagnosticSignInfo                       = { link = "InfoText" },
     DiagnosticSignHint                       = { link = "HintText" },
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
