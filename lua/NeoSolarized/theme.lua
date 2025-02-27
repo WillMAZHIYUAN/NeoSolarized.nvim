@@ -99,23 +99,23 @@ function M.setup()
     Float                                    = { fg = c.real_green },                                   --    a floating point constant: 2.3e10
     Boolean                                  = { fg = c.real_orange },                                   --  a boolean constant: TRUE, false
     Identifier                               = { fg = c.blue },   -- (preferred) any variable name
-    Function                                 = { fg = c.blue, bold = true }, -- function name (also: methods for classes)
-    Statement                                = { fg = c.real_orange, bold = true },     -- (preferred) any statement
+    Function                                 = { fg = c.orange }, -- function name (also: methods for classes)
+    Statement                                = { fg = c.orange },     -- (preferred) any statement
     Conditional                              = { fg = c.real_yellow, bold = true },    --  if, then, else, endif, switch, etc.
     Repeat                                   = { fg = c.real_yellow, bold = true },     --   for, do, while, etc.
     Label                                    = { fg = c.real_yellow, bold = true },                                   --    case, default, etc.
-    Operator                                 = { fg = c.orange, bold = true },                                   -- "sizeof", "+", "*", etc.
+    Operator                                 = { fg = c.real_yellow, bold = true },                                   -- "sizeof", "+", "*", etc.
     Keyword                                  = { fg = c.real_yellow, bold = true },     --  any other keyword
     Exception                                = { fg = c.real_orange, bold = true },     --  try, catch, throw
-    PreProc                                  = { fg = c.purple },  -- (preferred) generic Preprocessor
-    PreCondit                                = { fg = c.purple },
+    PreProc                                  = { fg = c.aqua },  -- (preferred) generic Preprocessor
+    PreCondit                                = { fg = c.aqua },
     Include                                  = { fg = c.purple },     --  preprocessor #include
     Define                                   = { fg = c.purple },  --   preprocessor #define
     Macro                                    = { fg = c.purple },                                     --    same as Define
-    Type                                     = { fg = c.purple, bold = true },                                   -- (preferred) int, long, char, etc.
-    StorageClass                             = { fg = c.yellow, bold = true },                                   -- static, register, volatile, etc.
-    Structure                                = { fg = c.yellow, bold = true },                                   --  struct, union, enum, etc.
-    Typedef                                  = { fg = c.purple, bold = true, italic = options.enable_italics },     --  A typedef
+    Type                                     = { fg = c.yellow },                                   -- (preferred) int, long, char, etc.
+    StorageClass                             = { fg = c.real_yellow },                                   -- static, register, volatile, etc.
+    Structure                                = { fg = c.real_yellow },                                   --  struct, union, enum, etc.
+    Typedef                                  = { fg = c.blue },     --  A typedef
     Special                                  = { fg = c.orange, bold = true },                                   -- (preferred) any special symbol
     SpecialChar                              = { fg = c.orange, bold = true },                                   --  special character in a constant
     Tag                                      = { fg = c.orange, bold = true },                                   --    you can use CTRL-] on this
@@ -136,12 +136,12 @@ function M.setup()
     YellowSign                               = { fg = c.real_yellow },
     GreenSign                                = { fg = c.real_green },
     BlueSign                                 = { fg = c.blue },
-    VirtualTextError                         = { fg = c.black, bg = c.real_orange },
-    VirtualTextWarning                       = { fg = c.black, bg = c.real_yellow },
+    VirtualTextError                         = { fg = c.real_orange },
+    VirtualTextWarning                       = { fg = c.real_yellow },
     VirtualTextInfo                          = { fg = c.fg0, bg = c.none },
     VirtualTextHint                          = { fg = c.hide_color, bg = c.none },
-    ErrorFloat                               = { fg = c.black, bg = c.real_orange },
-    WarningFloat                             = { fg = c.black, bg = c.real_yellow },
+    ErrorFloat                               = { fg = c.real_orange },
+    WarningFloat                             = { fg = c.real_yellow },
     InfoFloat                                = { fg = c.fg0, bg = c.none },
     HintFloat                                = { fg = c.hide_color, bg = c.none },
     WinBar                                   = { fg = c.hide_color, bg = c.none },
