@@ -21,15 +21,19 @@ function M.setup()
     CursorIM                                 = { fg = c.bg0, bg = c.fg0 },                      -- like Cursor, but used when in IME mode |CursorIM|
     CursorLine                               = { bg = c.none }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     CursorLineNr                             = { fg = c.base2 },                                -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    DiffAdd                                  = { bg = c.diff_add },                             -- diff mode: Added line |diff.txt|
-    DiffChange                               = { bg = c.diff_change },                          -- diff mode: Changed line |diff.txt|
-    DiffDelete                               = { bg = c.diff_delete },                          -- diff mode: Deleted line |diff.txt|
-    DiffText                                 = { bg = c.diff_text },                            -- diff mode: Changed text within a changed line |diff.txt|
+    DiffAdd                                  = { bg = c.diff_add, fg = c.black },                             -- diff mode: Added line |diff.txt|
+    DiffChange                               = { bg = c.diff_change, fg = c.black },                          -- diff mode: Changed line |diff.txt|
+    DiffDelete                               = { bg = c.diff_delete, fg = c.black },                          -- diff mode: Deleted line |diff.txt|
+    DiffText                                 = { bg = c.base2, fg = c.black },                            -- diff mode: Changed text within a changed line |diff.txt|
+    DiffAdds                                 = { bg = c.diff_add, fg = c.black },                             -- diff mode: Added line |diff.txt|
+    DiffChanges                              = { bg = c.diff_change, fg = c.black },                          -- diff mode: Changed line |diff.txt|
+    DiffDeletes                              = { bg = c.diff_delete, fg = c.black },                          -- diff mode: Deleted line |diff.txt|
+    DiffTexts                                = { bg = c.base2, fg = c.black },                            -- diff mode: Changed text within a changed line |diff.txt|
     Directory                                = { fg = c.blue },                                 -- directory names (and other special names in listings)
     EndOfBuffer                              = { fg = c.bg1 },                                  -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     FloatBorder                              = { fg = c.base1, bg = c.none },
     FoldColumn                               = { bg = options.transparent and c.none or c.bg0, fg = c.bg1 }, -- 'foldcolumn'
-    Folded                                   = { fg = c.blue, bg = c.bg1 },                                  -- line used for closed folds
+    Folded                                   = { fg = c.hide_color },                                  -- line used for closed folds
     Foo                                      = { bg = c.purple, fg = c.purple },
     IncSearch                                = { bg = c.real_orange, fg = c.black, bold = true },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -43,17 +47,17 @@ function M.setup()
     NormalNC                                 = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text in non-current windows
     NormalSB                                 = { fg = c.fg0, bg = c.bg0 },                                        -- normal text in sidebar
     Pmenu                                    = { bg = options.transparent and c.none or c.bg1, fg = c.fg0 },      -- Popup menu: normal item.
-    PmenuSbar                                = { bg = c.black },                  -- Popup menu: scrollbar.
+    PmenuSbar                                = { bg = c.black, fg = c.black },                  -- Popup menu: scrollbar.
     PmenuSel                                 = { bg = c.none, fg = c.real_orange },                                      -- Popup menu: selected item.
-    PmenuThumb                               = { bg = c.purple},                                                  -- Popup menu: Thumb of the scrollbar.
+    PmenuThumb                               = { bg = c.purple, fg = c.purple },                                                  -- Popup menu: Thumb of the scrollbar.
     PopupNotification                        = { bg = c.none, fg = c.hide_color},
-    Question                                 = { fg = c.blue },                                                   -- |hit-enter| prompt and yes/no questions
+    Question                                 = { fg = c.cyan },                                                   -- |hit-enter| prompt and yes/no questions
     QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search                                   = { fg = c.cyan, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
-    SpecialKey                               = { fg = c.fg2 },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad                                 = { sp = c.red, undercurl = options.styles.undercurl },              -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpecialKey                               = { fg = c.real_orange },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad                                 = { sp = c.yello, undercurl = options.styles.undercurl },              -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap                                 = { sp = c.blue, undercurl = options.styles.undercurl },             -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal                               = { sp = c.purple, undercurl = options.styles.undercurl },           -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare                                = { sp = c.green, undercurl = options.styles.undercurl },            -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
@@ -62,7 +66,7 @@ function M.setup()
     Substitute                               = { bg = c.red, fg = c.bg0 },                                        -- |:substitute| replacement text highlighting
     TabLine                                  = { fg = c.fg2 },                                                    -- tab pages line, not active tab page label
     TabLineFill                              = { bg = c.bg0 },                                                    -- tab pages line, where there are no labels
-    TabLineSel                               = { fg = c.bg0, bg = c.blue },                                       -- tab pages line, active tab page label
+    TabLineSel                               = { fg = c.real_orange, bg = c.none },                                       -- tab pages line, active tab page label
     Title                                    = { fg = c.blue, bold = true },                                      -- titles for output from ":set all", ":autocmd" etc.
     VertSplit                                = { fg = options.transparent and c.bg0 or c.base1 },                 -- the column separating vertically split windows
     Visual                                   = {
@@ -130,15 +134,16 @@ function M.setup()
     YellowSign                               = { fg = c.real_yellow },
     GreenSign                                = { fg = c.real_green },
     BlueSign                                 = { fg = c.blue },
-    VirtualTextWarning                       = { fg = c.real_yellow },
-    VirtualTextError                         = { fg = c.real_orange },
-    VirtualTextInfo                          = { fg = c.blue },
-    VirtualTextHint                          = { fg = c.real_green },
-    ErrorFloat                               = { fg = c.real_orange, bg = options.transparent and c.none or c.bg1 },
-    WarningFloat                             = { fg = c.real_yellow, bg = options.transparent and c.none or c.bg1 },
-    InfoFloat                                = { fg = c.blue, bg = options.transparent and c.none or c.bg1 },
-    HintFloat                                = { fg = c.real_green, bg = options.transparent and c.none or c.bg1 },
-    --[[ WinBarNC                   = { fg = c.base1 }, ]]
+    VirtualTextWarning                       = { fg = c.black, bg = c.real_yellow },
+    VirtualTextError                         = { fg = c.black, bg = c.real_orange },
+    VirtualTextInfo                          = { fg = c.black, bg = c.fg0 },
+    VirtualTextHint                          = { fg = c.hide_color, bg = c.none },
+    ErrorFloat                               = { fg = c.black, bg = c.real_orange },
+    WarningFloat                             = { fg = c.black, bg = c.real_yellow },
+    InfoFloat                                = { fg = c.black, bg = c.fg0 },
+    HintFloat                                = { fg = c.hide_color, bg = c.none },
+    WinBar                                   = { fg = c.hide_color, bg = c.none },
+    WinBarNC                                 = { fg = c.hide_color, bg = c.none },
     DiagnosticFloatingError                  = { link = "ErrorFloat" },
     DiagnosticFloatingWarn                   = { link = "WarningFloat" },
     DiagnosticFloatingInfo                   = { link = "InfoFloat" },
@@ -196,30 +201,30 @@ function M.setup()
     ALEWarningSign                           = { link = "WarningMsg" },
     -- These highlight Groups are for Tree-sitter
     TSAnnotation                             = { fg = c.purple },
-    TSAttribute                              = { fg = c.purple },
-    TSBoolean                                = { fg = c.purple },
-    TSCharacter                              = { fg = c.aqua },
+    TSAttribute                              = { fg = c.blue },
+    TSBoolean                                = { fg = c.real_orange },
+    TSCharacter                              = { fg = c.green },
     TSComment                                = { link = "Comment" },
     TSConditional                            = { link = "Conditional" },
-    TSConstBuiltin                           = { fg = c.blue, italic = true },
-    TSConstMacro                             = { fg = c.blue, italic = true },
-    TSConstant                               = { fg = c.fg0 },
-    TSConstructor                            = { fg = c.green, bold = true },
-    TSException                              = { fg = c.red },
-    TSField                                  = { fg = c.green },
-    TSFloat                                  = { fg = c.purple },
-    TSFuncBuiltin                            = { fg = c.green, bold = true },
-    TSFuncMacro                              = { fg = c.green, bold = true },
-    TSFunction                               = { fg = c.green, bold = true },
-    TSInclude                                = { fg = c.red },
-    TSKeyword                                = { fg = c.red },
-    TSKeywordFunction                        = { fg = c.red },
-    TSKeywordOperator                        = { fg = c.orange },
-    TSLabel                                  = { fg = c.orange },
-    TSMethod                                 = { fg = c.green, bold = true },
-    TSNamespace                              = { fg = c.yellow, italic = true },
-    TSNone                                   = { fg = c.fg0 },
-    TSNumber                                 = { fg = c.green },
+    TSConstBuiltin                           = { link = "Constant" },
+    TSConstMacro                             = { link = "Constant" },
+    TSConstant                               = { link = "Constant" },
+    TSConstructor                            = { link = "Constant" },
+    TSException                              = { fg = c.real_orange },
+    TSField                                  = { fg = c.yellow },
+    TSFloat                                  = { fg = c.real_green },
+    TSFuncBuiltin                            = { fg = c.blue, bold = true },
+    TSFuncMacro                              = { fg = c.blue, bold = true },
+    TSFunction                               = { fg = c.blue, bold = true },
+    TSInclude                                = { link = "Include" },
+    TSKeyword                                = { link = "Keyword" },
+    TSKeywordFunction                        = { link = "Keyword" },
+    TSKeywordOperator                        = { link = "Keyword" },
+    TSLabel                                  = { link = "Label" },
+    TSMethod                                 = { fg = c.blue, bold = true },
+    TSNamespace                              = { fg = c.aqua, italic = true },
+    TSNone                                   = { fg = c.real_orange },
+    TSNumber                                 = { fg = c.real_green },
     TSOperator                               = { fg = c.orange },
     TSParameter                              = { fg = c.fg0 },
     TSParameterReference                     = { fg = c.fg0 },
@@ -227,44 +232,44 @@ function M.setup()
     TSPunctBracket                           = { fg = c.fg0 },
     TSPunctDelimiter                         = { fg = c.base1 },
     TSPunctSpecial                           = { fg = c.blue },
-    TSRepeat                                 = { fg = c.red },
-    TSStorageClass                           = { fg = c.orange },
-    TSString                                 = { fg = c.aqua },
-    TSStringEscape                           = { fg = c.green },
-    TSStringRegex                            = { fg = c.green },
+    TSRepeat                                 = { link = "Repeat" },
+    TSStorageClass                           = { link = "StorageClass" },
+    TSString                                 = { link = "String" },
+    TSStringEscape                           = { link = "String" },
+    TSStringRegex                            = { link = "String" },
     TSSymbol                                 = { fg = c.fg0 },
-    TSTag                                    = { fg = c.orange },
+    TSTag                                    = { fg = c.real_orange },
     TSTagDelimiter                           = { fg = c.green },
-    TSText                                   = { fg = c.green },
+    TSText                                   = { fg = c.fg0 },
     TSStrike                                 = { fg = c.base1 },
-    TSMath                                   = { fg = c.blue },
-    TSType                                   = { fg = c.yellow },
-    TSTypeBuiltin                            = { fg = c.yellow, italic = true },
+    TSMath                                   = { fg = c.real_green },
+    TSType                                   = { link = "Type" },
+    TSTypeBuiltin                            = { link = "Type" },
     TSURI                                    = { link = "markdownUrl" },
-    TSVariable                               = { fg = c.fg0 },
-    TSVariableBuiltin                        = { fg = c.blue, italic = true },
+    TSVariable                               = { link = "Identifier" },
+    TSVariableBuiltin                        = { link = "Identifier" },
     --- Identifiers
-    ["@variable"]                            = { fg = c.fg, style = options.styles.variables }, -- Any variable name that does not have another highlight.
-    ["@variable.builtin"]                    = { fg = c.red },                                  -- Variable names that are defined by the languages, like `this` or `self`.
-    ["@text.reference"]                      = { fg = c.purple },
-    ["@text.todo.unchecked"]                 = { fg = c.blue },                                 -- For brackets and parens.
-    ["@text.todo.checked"]                   = { fg = c.green },                                -- For brackets and parens.
-    ["@text.warning"]                        = { fg = c.bg, bg = c.yellow },
-    ["@text.danger"]                         = { fg = c.fg0, bg = c.red },
+    ["@variable"]                            = { link = "Identifier" }, -- Any variable name that does not have another highlight.
+    ["@variable.builtin"]                    = { link = "Identifier" },                                  -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@text.reference"]                      = { link = "Identifier" },
+    ["@text.todo.unchecked"]                 = { fg = c.violet },                                 -- For brackets and parens.
+    ["@text.todo.checked"]                   = { fg = c.hide_color },                                -- For brackets and parens.
+    ["@text.warning"]                        = { fg = c.black, bg = c.real_yellow },
+    ["@text.danger"]                         = { fg = c.black, bg = c.real_orange },
     ["@text.diff.add"]                       = { link = "DiffAdd" },
     ["@text.diff.delete"]                    = { link = "DiffDelete" },
     ["@namespace"]                           = { link = "Include" },
     -- LSP Semantic Token Groups
-    ["@lsp.type.comment"]                    = { link = "TSComment" },
-    ["@lsp.type.enum"]                       = { link = "@type" },
-    ["@lsp.type.enumMember"]                 = { link = "TSConstructor" },
-    ["@lsp.type.interface"]                  = { fg = c.blue },
-    ["@lsp.type.keyword"]                    = { link = "TSKeyword" },
-    ["@lsp.type.modifier"]                   = { fg = c.red },
-    ["@lsp.type.namespace"]                  = { link = "TSNameSpace" },
+    ["@lsp.type.comment"]                    = { link = "Comment" },
+    ["@lsp.type.enum"]                       = { link = "Type" },
+    ["@lsp.type.enumMember"]                 = { link = "Number" },
+    ["@lsp.type.interface"]                  = { fg = c.yellow },
+    ["@lsp.type.keyword"]                    = { link = "Keyword" },
+    ["@lsp.type.modifier"]                   = { fg = c.real_orange },
+    ["@lsp.type.namespace"]                  = { link = "TSNamespace" },
     ["@lsp.type.parameter"]                  = { link = "TSParameter" },
     ["@lsp.type.property"]                   = { link = "TSProperty" },
-    ["@lsp.type.variable"]                   = { fg = c.fg0 },
+    ["@lsp.type.variable"]                   = { fg = c.blue },
     ["@lsp.typemod.function.defaultLibrary"] = { link = "TSFuncBuiltin" },
     ["@lsp.typemod.macro.defaultLibrary"]    = { link = "TSFuncBuiltin" },
     ["@lsp.typemod.method.defaultLibrary"]   = { link = "TSFuncBuiltin" },
@@ -728,10 +733,10 @@ function M.setup()
     --]]
 
     -- HTML
-    htmlH1                                    = { fg = c.red, bold = true },
-    htmlH2                                    = { fg = c.orange, bold = true },
-    htmlH3                                    = { fg = c.yellow, bold = true },
-    htmlH4                                    = { fg = c.green, bold = true },
+    htmlH1                                    = { fg = c.cyan, bold = true },
+    htmlH2                                    = { fg = c.real_orange, bold = true },
+    htmlH3                                    = { fg = c.real_green, bold = true },
+    htmlH4                                    = { fg = c.real_yellow, bold = true },
     htmlH5                                    = { fg = c.blue, bold = true },
     htmlH6                                    = { fg = c.purple, bold = true },
     htmlLink                                  = { underline = true },
@@ -744,10 +749,10 @@ function M.setup()
     htmlItalic                                = { italic = true },
     mkdCodeDelimiter                          = { bg = c.bg0, fg = c.fg0 },
     -- MarkDown
-    markdownH1                                = { fg = c.red, bold = true },
-    markdownH2                                = { fg = c.orange, bold = true },
-    markdownH3                                = { fg = c.yellow, bold = true },
-    markdownH4                                = { fg = c.green, bold = true },
+    markdownH1                                = { fg = c.cyan, bold = true },
+    markdownH2                                = { fg = c.real_orange, bold = true },
+    markdownH3                                = { fg = c.real_green, bold = true },
+    markdownH4                                = { fg = c.real_yellow, bold = true },
     markdownH5                                = { fg = c.blue, bold = true },
     markdownH6                                = { fg = c.purple, bold = true },
     markdownUrl                               = { fg = c.blue, underline = true },
