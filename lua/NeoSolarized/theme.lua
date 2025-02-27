@@ -12,7 +12,7 @@ function M.setup()
 
   theme.highlights = {
     ColorColumn                              = { bg = c.bg1 },                                  -- used for the columns set with 'colorcolumn'
-    Comment                                  = { fg = c.hide_color, style = options.styles.comments }, -- any comment
+    Comment                                  = { fg = c.hide_color, bg = c.none, style = options.styles.comments }, -- any comment
     Conceal                                  = { fg = c.bg1 },                                  -- placeholder characters substituted for concealed text (see 'conceallevel')
     CurSearch                                = { fg = c.black, bg = c.real_orange },
     CurrentWord                              = { fg = c.bg0, bg = c.fg0 },
@@ -41,11 +41,11 @@ function M.setup()
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
     MoreMsg                                  = { fg = c.fg2 },                                                   -- |more-prompt|
     MsgArea                                  = { fg = c.base2 },                                                  -- Area for messages and cmdline
-    NonText                                  = { fg = c.hide_color },                                                    -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal                                   = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text
-    NormalFloat                              = { fg = c.fg0, bg = options.transparent and c.none or c.bg1 },      -- Normal text in floating windows.
-    NormalNC                                 = { fg = c.fg0, bg = options.transparent and c.none or c.bg0 },      -- normal text in non-current windows
-    NormalSB                                 = { fg = c.fg0, bg = c.bg0 },                                        -- normal text in sidebar
+    NonText                                  = { fg = c.hide_color, bg = c.none },                                                    -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal                                   = { fg = c.fg0, bg = c.none },      -- normal text
+    NormalFloat                              = { fg = c.fg0, bg = c.none },      -- Normal text in floating windows.
+    NormalNC                                 = { fg = c.fg0, bg = c.none },      -- normal text in non-current windows
+    NormalSB                                 = { fg = c.fg0, bg = c.none },                                        -- normal text in sidebar
     Pmenu                                    = { bg = options.transparent and c.none or c.bg1, fg = c.fg0 },      -- Popup menu: normal item.
     PmenuSbar                                = { bg = c.black, fg = c.black },                  -- Popup menu: scrollbar.
     PmenuSel                                 = { bg = c.none, fg = c.real_orange },                                      -- Popup menu: selected item.
@@ -67,7 +67,7 @@ function M.setup()
     TabLine                                  = { fg = c.fg2 },                                                    -- tab pages line, not active tab page label
     TabLineFill                              = { bg = c.bg0 },                                                    -- tab pages line, where there are no labels
     TabLineSel                               = { fg = c.real_orange, bg = c.none },                                       -- tab pages line, active tab page label
-    Title                                    = { fg = c.blue, bold = true },                                      -- titles for output from ":set all", ":autocmd" etc.
+    Title                                    = { fg = c.cyan, bold = true },                                      -- titles for output from ":set all", ":autocmd" etc.
     VertSplit                                = { fg = options.transparent and c.bg0 or c.base1 },                 -- the column separating vertically split windows
     Visual                                   = {
       bg = config.is_day() and c.base1 or c.bg1,
@@ -78,6 +78,8 @@ function M.setup()
     ErrorText                                = { sp = c.real_orange, bold = true, undercurl = options.styles.undercurl },
     WarningMsg                               = { fg = c.real_yellow, bold = true, undercurl = options.styles.undercurl },                                               -- warning messages
     WarningText                              = { sp = c.real_yellow, bold = true, undercurl = options.styles.undercurl },
+    InfoMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
+    InfoText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
     HintMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
     HintText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -162,8 +164,8 @@ function M.setup()
     DiagnosticUnderlineHint                  = { link = "HintText" },
     DiagnosticSignError                      = { link = "RedSign" },
     DiagnosticSignWarn                       = { link = "YellowSign" },
-    DiagnosticSignInfo                       = { link = "BlueSign" },
-    DiagnosticSignHiblue                     = { link = "GreenSign" },
+    DiagnosticSignInfo                       = { link = "GreenSign" },
+    DiagnosticSignHint                       = { link = "HintText" },
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
@@ -514,25 +516,25 @@ function M.setup()
     -- LspSaga (end)
 
     -- BufferLine
-    BufferLineIndicatorSelected              = { link = "GreenSign" },
+    BufferLineIndicatorSelected              = { fg = c.green, bg = c.none },
     -- Barbar
     BufferCurrent                            = { bg = c.fg2, fg = c.fg0 },
     BufferCurrentIndex                       = { bg = c.fg2, fg = c.base2 },
     BufferCurrentMod                         = { bg = c.fg2, fg = c.yellow },
     BufferCurrentSign                        = { bg = c.fg2, fg = c.yellow },
-    BufferCurrentTarget                      = { bg = c.fg2, fg = c.red },
+    BufferCurrentTarget                      = { bg = c.fg2, fg = c.real_orange },
     BufferVisible                            = { bg = c.bg1, fg = c.fg0 },
     BufferVisibleIndex                       = { bg = c.bg1, fg = c.yellow },
-    BufferVisibleMod                         = { bg = c.bg1, fg = c.red },
-    BufferVisibleSign                        = { bg = c.bg1, fg = c.green },
-    BufferVisibleTarget                      = { bg = c.bg1, fg = c.red },
-    BufferInactive                           = { bg = c.bg1, fg = c.base2 },
-    BufferInactiveIndex                      = { bg = c.bg1, fg = c.base2 },
-    BufferInactiveMod                        = { bg = c.bg1, fg = c.red },
-    BufferInactiveSign                       = { bg = c.bg1, fg = c.blue },
-    BufferInactiveTarget                     = { bg = c.bg1, fg = c.red },
+    BufferVisibleMod                         = { bg = c.bg1, fg = c.real_orange },
+    BufferVisibleSign                        = { bg = c.bg1, fg = c.real_green },
+    BufferVisibleTarget                      = { bg = c.bg1, fg = c.real_orange },
+    BufferInactive                           = { bg = c.bg1, fg = c.hide_color },
+    BufferInactiveIndex                      = { bg = c.bg1, fg = c.hide_color },
+    BufferInactiveMod                        = { bg = c.bg1, fg = c.hide_color },
+    BufferInactiveSign                       = { bg = c.bg1, fg = c.hide_color },
+    BufferInactiveTarget                     = { bg = c.bg1, fg = c.hide_color },
     BufferTabpages                           = { bg = c.bg1, fg = c.none },
-    BufferTabpage                            = { bg = c.bg1, fg = c.blue },
+    BufferTabpage                            = { bg = c.bg1, fg = c.none },
     -- Sneak
     Sneak                                    = { link = "Search" },
     SneakScope                               = { link = "DiffText" },
