@@ -99,8 +99,8 @@ function M.setup()
     Float                                    = { fg = c.real_green },                                   --    a floating point constant: 2.3e10
     Boolean                                  = { fg = c.real_orange },                                   --  a boolean constant: TRUE, false
     Identifier                               = { fg = c.blue },   -- (preferred) any variable name
-    Function                                 = { fg = c.orange }, -- function name (also: methods for classes)
-    Statement                                = { fg = c.orange },     -- (preferred) any statement
+    Function                                 = { fg = c.purple }, -- function name (also: methods for classes)
+    Statement                                = { fg = c.purple },     -- (preferred) any statement
     Conditional                              = { fg = c.real_yellow, bold = true },    --  if, then, else, endif, switch, etc.
     Repeat                                   = { fg = c.real_yellow, bold = true },     --   for, do, while, etc.
     Label                                    = { fg = c.real_yellow, bold = true },                                   --    case, default, etc.
@@ -213,18 +213,18 @@ function M.setup()
     TSConstant                               = { link = "Constant" },
     TSConstructor                            = { link = "Constant" },
     TSException                              = { fg = c.real_orange },
-    TSField                                  = { fg = c.yellow },
+    TSField                                  = { fg = c.blue },
     TSFloat                                  = { fg = c.real_green },
-    TSFuncBuiltin                            = { fg = c.blue, bold = true },
-    TSFuncMacro                              = { fg = c.blue, bold = true },
-    TSFunction                               = { fg = c.blue, bold = true },
+    TSFuncBuiltin                            = { fg = c.purple, bold = true },
+    TSFuncMacro                              = { fg = c.purple, bold = true },
+    TSFunction                               = { fg = c.purple, bold = true },
     TSInclude                                = { link = "Include" },
     TSKeyword                                = { link = "Keyword" },
-    TSKeywordFunction                        = { link = "Keyword" },
-    TSKeywordOperator                        = { link = "Keyword" },
+    TSKeywordFunction                        = { link = "Function" },
+    TSKeywordOperator                        = { link = "Operator" },
     TSLabel                                  = { link = "Label" },
-    TSMethod                                 = { fg = c.blue, bold = true },
-    TSNamespace                              = { fg = c.aqua, italic = true },
+    TSMethod                                 = { fg = c.purple, bold = true },
+    TSNamespace                              = { fg = c.violet, italic = true },
     TSNone                                   = { fg = c.real_orange },
     TSNumber                                 = { fg = c.real_green },
     TSOperator                               = { fg = c.orange },
@@ -232,8 +232,8 @@ function M.setup()
     TSParameterReference                     = { fg = c.fg0 },
     TSProperty                               = { fg = c.blue },
     TSPunctBracket                           = { fg = c.fg0 },
-    TSPunctDelimiter                         = { fg = c.base1 },
-    TSPunctSpecial                           = { fg = c.blue },
+    TSPunctDelimiter                         = { fg = c.fg0, bold = true },
+    TSPunctSpecial                           = { fg = c.orange, bold = true },
     TSRepeat                                 = { link = "Repeat" },
     TSStorageClass                           = { link = "StorageClass" },
     TSString                                 = { link = "String" },
@@ -256,28 +256,28 @@ function M.setup()
     ["@text.reference"]                      = { link = "Identifier" },
     ["@text.todo.unchecked"]                 = { fg = c.violet },                                 -- For brackets and parens.
     ["@text.todo.checked"]                   = { fg = c.hide_color },                                -- For brackets and parens.
-    ["@text.warning"]                        = { fg = c.black, bg = c.real_yellow },
-    ["@text.danger"]                         = { fg = c.black, bg = c.real_orange },
+    ["@text.warning"]                        = { fg = c.real_yellow },
+    ["@text.danger"]                         = { fg = c.real_orange },
     ["@text.diff.add"]                       = { link = "DiffAdd" },
     ["@text.diff.delete"]                    = { link = "DiffDelete" },
-    ["@namespace"]                           = { link = "Include" },
+    ["@namespace"]                           = { link = "TSNamespace" },
     -- LSP Semantic Token Groups
     ["@lsp.type.comment"]                    = { link = "Comment" },
     ["@lsp.type.enum"]                       = { link = "Type" },
     ["@lsp.type.enumMember"]                 = { link = "Number" },
-    ["@lsp.type.interface"]                  = { fg = c.yellow },
+    ["@lsp.type.interface"]                  = { fg = c.real_yellow },
     ["@lsp.type.keyword"]                    = { link = "Keyword" },
-    ["@lsp.type.modifier"]                   = { fg = c.real_orange },
+    ["@lsp.type.modifier"]                   = { link = "Special" },
     ["@lsp.type.namespace"]                  = { link = "TSNamespace" },
     ["@lsp.type.parameter"]                  = { link = "TSParameter" },
     ["@lsp.type.property"]                   = { link = "TSProperty" },
     ["@lsp.type.variable"]                   = { fg = c.blue },
-    ["@lsp.typemod.function.defaultLibrary"] = { link = "TSFuncBuiltin" },
-    ["@lsp.typemod.macro.defaultLibrary"]    = { link = "TSFuncBuiltin" },
-    ["@lsp.typemod.method.defaultLibrary"]   = { link = "TSFuncBuiltin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "TSFunction" },
+    ["@lsp.typemod.macro.defaultLibrary"]    = { link = "TSFuncMacro" },
+    ["@lsp.typemod.method.defaultLibrary"]   = { link = "TSMethod" },
     ["@lsp.typemod.operator.injected"]       = { link = "TSOperator" },
-    ["@lsp.typemod.string.injected"]         = { link = "@string" },
-    ["@lsp.typemod.type.defaultLibrary"]     = { fg = c.blue },
+    ["@lsp.typemod.string.injected"]         = { link = "String" },
+    ["@lsp.typemod.type.defaultLibrary"]     = { link = "Type" },
     ["@lsp.typemod.variable.defaultLibrary"] = { link = "TSVariableBuiltin" },
     ["@lsp.typemod.variable.injected"]       = { link = "TSVariable" },
     -- ts-rainbow
