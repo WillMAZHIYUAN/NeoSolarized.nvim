@@ -15,6 +15,8 @@ function M.setup()
     Comment                                  = { fg = c.hide_color, bg = c.none, style = options.styles.comments }, -- any comment
     Conceal                                  = { fg = c.bg1 },                                  -- placeholder characters substituted for concealed text (see 'conceallevel')
     CurSearch                                = { fg = c.black, bg = c.real_orange },
+    Search                                   = { fg = c.cyan, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    IncSearch                                = { bg = c.real_orange, fg = c.black },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
     CurrentWord                              = { fg = c.bg0, bg = c.fg0 },
     Cursor                                   = { fg = c.bg0, bg = c.fg0 },                      -- character under the cursor
     CursorColumn                             = { link = "CursorLine" },                         -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -34,8 +36,7 @@ function M.setup()
     FloatBorder                              = { fg = c.base1, bg = c.none },
     FoldColumn                               = { bg = options.transparent and c.none or c.bg0, fg = c.bg1 }, -- 'foldcolumn'
     Folded                                   = { fg = c.hide_color },                                  -- line used for closed folds
-    Foo                                      = { bg = c.purple, fg = c.purple },
-    IncSearch                                = { bg = c.real_orange, fg = c.black, bold = true },                                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c" InfoText
+    Foo                                      = { bg = c.none, fg = c.purple },
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     MatchParen                               = { fg = c.cyan, bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
@@ -53,7 +54,6 @@ function M.setup()
     PopupNotification                        = { bg = c.none, fg = c.hide_color},
     Question                                 = { fg = c.cyan },                                                   -- |hit-enter| prompt and yes/no questions
     QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search                                   = { fg = c.cyan, underline = true },                                   -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
     SpecialKey                               = { fg = c.real_orange },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -107,7 +107,7 @@ function M.setup()
     Operator                                 = { fg = c.real_yellow, bold = true },                                   -- "sizeof", "+", "*", etc.
     Keyword                                  = { fg = c.real_yellow, bold = true },     --  any other keyword
     Exception                                = { fg = c.real_orange, bold = true },     --  try, catch, throw
-    PreProc                                  = { fg = c.aqua },  -- (preferred) generic Preprocessor
+    PreProc                                  = { fg = c.violet, bold = true },  -- (preferred) generic Preprocessor
     PreCondit                                = { fg = c.aqua },
     Include                                  = { fg = c.purple },     --  preprocessor #include
     Define                                   = { fg = c.purple },  --   preprocessor #define
@@ -449,10 +449,10 @@ function M.setup()
     -- general
     TitleString                              = { link = "String" },
     TitleSymbol                              = { link = "Symbol" },
-    TitleIcon                                = { fg = c.red },
+    TitleIcon                                = { fg = c.real_orange },
     SagaBorder                               = { link = "FloatBorder" },
-    SagaExpand                               = { fg = c.red },
-    SagaCollapse                             = { fg = c.red },
+    SagaExpand                               = { fg = c.real_orange },
+    SagaCollapse                             = { fg = c.real_orange },
     SagaBeacon                               = { bg = c.purple },
     -- code action
     ActionPreviewNormal                      = { link = 'SagaBorder' },
@@ -562,36 +562,36 @@ function M.setup()
     CmpDocumentation                         = { fg = c.fg0, bg = options.transparent and c.none or c.bg1 },
     CmpDocumentationBorder                   = { fg = c.bg1, bg = options.transparent and c.none or c.bg0 },
     CmpItemKindDefault                       = { fg = c.fg2, bg = c.none },
-    CmpItemAbbrMatch                         = { fg = c.green, bold = true },
-    CmpItemAbbrMatchFuzzy                    = { fg = c.green, bold = true },
+    CmpItemAbbrMatch                         = { fg = c.cyan, bold = true },
+    CmpItemAbbrMatchFuzzy                    = { fg = c.cyan, bold = true },
     CmpItemAbbr                              = { fg = c.fg0 },
     CmpItemAbbrDeprecated                    = { fg = c.base1 },
     CmpItemMenu                              = { fg = c.fg0 },
     CmpItemKind                              = { fg = c.yellow },
     CmpItemKindText                          = { fg = c.fg0 },
-    CmpItemKindMethod                        = { fg = c.green },
-    CmpItemKindFunction                      = { fg = c.green },
-    CmpItemKindConstructor                   = { fg = c.green },
-    CmpItemKindField                         = { fg = c.green },
+    CmpItemKindMethod                        = { fg = c.purple },
+    CmpItemKindFunction                      = { fg = c.purple },
+    CmpItemKindConstructor                   = { fg = c.yellow },
+    CmpItemKindField                         = { fg = c.blue },
     CmpItemKindVariable                      = { fg = c.blue },
-    CmpItemKindClass                         = { fg = c.yellow },
-    CmpItemKindInterface                     = { fg = c.yellow },
-    CmpItemKindModule                        = { fg = c.yellow },
+    CmpItemKindClass                         = { fg = c.real_yellow },
+    CmpItemKindInterface                     = { fg = c.real_yellow },
+    CmpItemKindModule                        = { fg = c.real_yellow },
     CmpItemKindProperty                      = { fg = c.blue },
     CmpItemKindUnit                          = { fg = c.purple },
     CmpItemKindValue                         = { fg = c.purple },
     CmpItemKindEnum                          = { fg = c.yellow },
-    CmpItemKindKeyword                       = { fg = c.red },
+    CmpItemKindKeyword                       = { fg = c.real_orange },
     CmpItemKindSnippet                       = { fg = c.aqua },
     CmpItemKindColor                         = { fg = c.aqua },
     CmpItemKindFile                          = { fg = c.aqua },
     CmpItemKindReference                     = { fg = c.aqua },
     CmpItemKindFolder                        = { fg = c.aqua },
-    CmpItemKindEnumMember                    = { fg = c.purple },
-    CmpItemKindConstant                      = { fg = c.blue },
-    CmpItemKindStruct                        = { fg = c.yellow },
+    CmpItemKindEnumMember                    = { fg = c.real_green },
+    CmpItemKindConstant                      = { fg = c.green },
+    CmpItemKindStruct                        = { fg = c.real_yellow },
     CmpItemKindEvent                         = { fg = c.orange },
-    CmpItemKindOperator                      = { fg = c.orange },
+    CmpItemKindOperator                      = { fg = c.real_orange },
     CmpItemKindTypeParameter                 = { fg = c.yellow },
     NavicIconsFile                           = { fg = c.fg0 },
     NavicIconsModule                         = { fg = c.yellow },
@@ -625,7 +625,7 @@ function M.setup()
     -- Indent Blank Line
     IblIndent                                = { fg = options.transparent and c.bg1 or c.fg2, bg = c.none },
     IblScope                                 = { fg = c.text, bg = c.none },
-    RainbowRed                               = { blend = 0, fg = c.red },
+    RainbowRed                               = { blend = 0, fg = c.orange },
     RainbowYellow                            = { blend = 0, fg = c.yellow },
     RainbowBlue                              = { blend = 0, fg = c.blue },
     RainbowOrange                            = { blend = 0, fg = c.purple },

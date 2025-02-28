@@ -24,7 +24,7 @@ theme = {
     c = { bg = light and palette.bg1 or palette.bg0, fg = light and palette.base3 or palette.fg0 },
   },
   replace = {
-    a = { bg = palette.bg_yello, fg = palette.bg0, gui = 'bold' },
+    a = { bg = palette.bg_yellow, fg = palette.bg0, gui = 'bold' },
     b = { bg = light and palette.bg1 or palette.bg0, fg = light and palette.base3 or palette.fg0 },
     c = { bg = light and palette.bg1 or palette.bg0, fg = light and palette.base3 or palette.fg0 },
   },
