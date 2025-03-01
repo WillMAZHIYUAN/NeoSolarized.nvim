@@ -36,7 +36,7 @@ function M.setup()
     FloatBorder                              = { fg = c.base1, bg = c.none },
     FoldColumn                               = { bg = options.transparent and c.none or c.bg0, fg = c.bg1 }, -- 'foldcolumn'
     Folded                                   = { fg = c.hide_color },                                  -- line used for closed folds
-    Foo                                      = { bg = c.none, fg = c.purple },
+    Foo                                      = { bg = c.none, fg = c.purple, bold = true },
     LineNr                                   = { bg = options.transparent and c.none or c.bg1, fg = c.fg1 },      -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     MatchParen                               = { fg = c.cyan, bold = true },                                    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                                  = { fg = c.fg2, bold = true },                                       -- 'showmode' message (e.g., "-- INSERT -- ")
@@ -99,8 +99,8 @@ function M.setup()
     Float                                    = { fg = c.real_green },                                   --    a floating point constant: 2.3e10
     Boolean                                  = { fg = c.real_orange },                                   --  a boolean constant: TRUE, false
     Identifier                               = { fg = c.blue },   -- (preferred) any variable name
-    Function                                 = { fg = c.purple }, -- function name (also: methods for classes)
-    Statement                                = { fg = c.purple },     -- (preferred) any statement
+    Function                                 = { fg = c.purple, bold = true }, -- function name (also: methods for classes)
+    Statement                                = { fg = c.purple, bold = true },     -- (preferred) any statement
     Conditional                              = { fg = c.real_yellow, bold = true },    --  if, then, else, endif, switch, etc.
     Repeat                                   = { fg = c.real_yellow, bold = true },     --   for, do, while, etc.
     Label                                    = { fg = c.real_yellow, bold = true },                                   --    case, default, etc.
