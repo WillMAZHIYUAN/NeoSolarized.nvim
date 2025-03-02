@@ -66,7 +66,7 @@ function M.setup()
     Substitute                               = { bg = c.red, fg = c.bg0 },                                        -- |:substitute| replacement text highlighting
     TabLine                                  = { fg = c.fg2 },                                                    -- tab pages line, not active tab page label
     TabLineFill                              = { bg = c.bg0 },                                                    -- tab pages line, where there are no labels
-    TabLineSel                               = { fg = c.real_orange, bg = c.none },                                       -- tab pages line, active tab page label
+    TabLineSel                               = { fg = c.real_orange, bg = c.none, bold = true, underline = true },                                       -- tab pages line, active tab page label
     Title                                    = { fg = c.cyan, bold = true },                                      -- titles for output from ":set all", ":autocmd" etc.
     VertSplit                                = { fg = options.transparent and c.bg0 or c.base1 },                 -- the column separating vertically split windows
     Visual                                   = {
@@ -80,8 +80,8 @@ function M.setup()
     WarningText                              = { sp = c.real_yellow, bold = true, undercurl = options.styles.undercurl },
     InfoMsg                                  = { fg = c.fg0, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
     InfoText                                 = { sp = c.fg0, bold = true, undercurl = options.styles.undercurl },
-    HintMsg                                  = { fg = c.hide_color, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
-    HintText                                 = { sp = c.hide_color, bold = true, undercurl = options.styles.undercurl },
+    HintMsg                                  = { fg = c.fg0, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
+    HintText                                 = { sp = c.fg0, bold = true, undercurl = options.styles.undercurl },
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu                                 = { bg = c.bg1 },                                               -- current match in 'wildmenu' completion
     WinSeparator                             = { fg = options.transparent and c.bg0 or c.bg1, bold = true }, -- the column separating vertically split windows
@@ -693,10 +693,10 @@ function M.setup()
     MiniStatuslineModeReplace                = { fg = "BLACK", bg = c.red, bold = true },
     MiniStatuslineModeVisual                 = { fg = "BLACK", bg = c.purple, bold = true },
     MiniSurround                             = { bg = c.orange, fg = "BLACK" },
-    MiniTablineCurrent                       = { fg = c.fg1, bg = c.fg2 },
+    MiniTablineCurrent                       = { fg = c.real_orange, bg = c.none },
     MiniTablineFill                          = { bg = c.none },
     MiniTablineHidden                        = { fg = "BLACK", bg = c.bg1 },
-    MiniTablineModifiedCurrent               = { fg = c.red, bg = c.fg2 },
+    MiniTablineModifiedCurrent               = { fg = c.real_orange, bg = c.fg2 },
     MiniTablineModifiedHidden                = { bg = c.bg1, fg = c.bg_red },
     MiniTablineModifiedVisible               = { fg = c.yellow, bg = c.bg1 },
     MiniTablineTabpagesection                = { bg = c.bg1, fg = c.none },
