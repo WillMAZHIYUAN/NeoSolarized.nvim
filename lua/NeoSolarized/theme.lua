@@ -53,7 +53,7 @@ function M.setup()
     PmenuThumb                               = { bg = c.purple, fg = c.purple },                                                  -- Popup menu: Thumb of the scrollbar.
     PopupNotification                        = { bg = c.none, fg = c.hide_color},
     Question                                 = { fg = c.cyan },                                                   -- |hit-enter| prompt and yes/no questions
-    QuickFixLine                             = { bg = c.bg1, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    QuickFixLine                             = { fg = c.cyan, bg = c.none, bold = true, undercurl = options.styles.undercurl }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     SignColumn                               = { bg = options.transparent and c.none or c.bg0 },                  -- column where |signs| are displayed
     SignColumnSB                             = { bg = c.bg0, fg = c.bg1 },                                        -- column where |signs| are displayed
     SpecialKey                               = { fg = c.real_orange },                                                    -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -85,7 +85,7 @@ function M.setup()
     Whitespace                               = { fg = c.fg2 },                                               -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu                                 = { bg = c.bg1 },                                               -- current match in 'wildmenu' completion
     WinSeparator                             = { fg = options.transparent and c.bg0 or c.bg1, bold = true }, -- the column separating vertically split windows
-    lCursor                                  = { fg = c.bg0, bg = c.fg0 },                                   -- the character under the cursor when |language-mapping| is used (see 'guicursor')
+    lCursor                                  = { fg = c.cyan, bg = c.none },                                   -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
     -- commented out groups should chain up to their "preferred" group by
