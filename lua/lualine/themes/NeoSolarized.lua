@@ -9,22 +9,22 @@ local theme = {}
 
 theme = {
   normal = {
-    a = { bg = light and palette.base3 or palette.fg2, fg = palette.bg0, gui = 'bold' },
+    a = { bg = palette.none, fg = palette.real_green, gui = 'bold' },
     b = { bg = palette.none, fg = palette.fg0 },
     c = { bg = palette.none, fg = palette.fg0 },
   },
   insert = {
-    a = { bg = palette.orange, fg = palette.bg0, gui = 'bold' },
+    a = { bg = palette.real_orange, fg = palette.bg0, gui = 'bold' },
     b = { bg = palette.none, fg = palette.fg0 },
     c = { bg = palette.none, fg = palette.fg0 },
   },
   visual = {
-    a = { bg = palette.bg_green, fg = palette.bg0, gui = 'bold' },
+    a = { bg = palette.blue, fg = palette.bg0, gui = 'bold' },
     b = { bg = palette.none, fg = palette.fg0 },
     c = { bg = palette.none, fg = palette.fg0 },
   },
   replace = {
-    a = { bg = palette.bg_yellow, fg = palette.bg0, gui = 'bold' },
+    a = { bg = palette.real_yellow, fg = palette.bg0, gui = 'bold' },
     b = { bg = palette.none, fg = palette.fg0 },
     c = { bg = palette.none, fg = palette.fg0 },
   },
