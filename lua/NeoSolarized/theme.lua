@@ -69,11 +69,8 @@ function M.setup()
     TabLineSel                               = { fg = c.real_orange, bg = c.none, bold = true, underline = true },                                       -- tab pages line, active tab page label
     Title                                    = { fg = c.cyan, bold = true },                                      -- titles for output from ":set all", ":autocmd" etc.
     VertSplit                                = { fg = options.transparent and c.bg0 or c.base1 },                 -- the column separating vertically split windows
-    Visual                                   = {
-      bg = config.is_day() and c.base1 or c.bg1,
-      fg = config.is_day() and c.fg0 or c.none
-    },                                                                                                       -- Visual mode selection
-    VisualNOS                                = { bg = c.bg1 },                                               -- Visual mode selection when vim is "Not Owning the Selection".
+    Visual                                   = { bg = c.none, fg = c.cyan, bold = true, italic = true, underline = true },                                                    -- Visual mode selection
+    VisualNOS                                = { bg = c.none, fg = c.cyan, bold = true, italic = true, underline = true },                                                    -- Visual mode selection when vim is "Not Owning the Selection".
     ErrorMsg                                 = { fg = c.real_orange, bold = true, undercurl = options.styles.undercurl },                                  -- error messages on the command line
     ErrorText                                = { sp = c.real_orange, bold = true, undercurl = options.styles.undercurl },
     WarningMsg                               = { fg = c.real_yellow, bold = true, undercurl = options.styles.undercurl },                                               -- warning messages
