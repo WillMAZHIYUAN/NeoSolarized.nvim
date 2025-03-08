@@ -513,7 +513,7 @@ function M.setup()
     -- LspSaga (end)
 
     -- BufferLine
-    BufferLineIndicatorSelected              = { fg = c.green, bg = c.none },
+    BufferLineIndicatorSelected              = { fg = c.cyan, bg = c.none },
     -- Barbar
     BufferCurrent                            = { bg = c.fg2, fg = c.fg0 },
     BufferCurrentIndex                       = { bg = c.fg2, fg = c.base2 },
